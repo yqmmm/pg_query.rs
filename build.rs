@@ -14,10 +14,7 @@ fn main() {
     let out_dir = PathBuf::from(env::var("OUT_DIR").unwrap());
     let build_dir = out_dir.join("libpg_query");
     let src_dir = PathBuf::from("./lib/libpg_query").canonicalize().unwrap();
-    println!(
-        "cargo:rerun-if-changed={}",
-        build_dir.join("pg_query.h").display()
-    );
+    println!("cargo:rerun-if-changed=build.rs");
 
     // Copy the files over
     eprintln!("Copying {} -> {}", src_dir.display(), build_dir.display());
